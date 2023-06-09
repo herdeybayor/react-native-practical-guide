@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FlatList, StyleSheet, TextInput, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { GoalInput, GoalItem } from "./components";
 
 export default function App() {
