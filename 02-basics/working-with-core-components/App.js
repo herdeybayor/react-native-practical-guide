@@ -33,7 +33,7 @@ export default function App() {
 
     return (
         <View style={styles.appContainer}>
-            <Button title="Add New Goal" color="#5e0acc" onPress={startAddGoalHandler} />
+            <Button title="Add New Goal" color="#a065ec" onPress={startAddGoalHandler} />
             <GoalInput onAddGoal={goalInputHandler} visible={modalVisible} onCancel={endAddGoalHandler} />
             <View style={styles.listContainer}>
                 <FlatList data={courseGoals} keyExtractor={(item) => item.id} renderItem={(itemData) => <GoalItem goal={itemData.item} onDeleteItem={deleteGoalHandler} />} />
