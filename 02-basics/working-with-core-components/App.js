@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, FlatList, StyleSheet, View } from "react-native";
 import { GoalInput, GoalItem } from "./components";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
     const [modalVisible, setModalVisible] = React.useState(false);
@@ -37,6 +38,7 @@ export default function App() {
             <View style={styles.listContainer}>
                 <FlatList data={courseGoals} keyExtractor={(item) => item.id} renderItem={(itemData) => <GoalItem goal={itemData.item} onDeleteItem={deleteGoalHandler} />} />
             </View>
+            <StatusBar backgroundColor="#ffffff" style="dark" />
         </View>
     );
 }
