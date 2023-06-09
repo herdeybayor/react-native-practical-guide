@@ -38,7 +38,7 @@ export default function App() {
             <View style={styles.listContainer}>
                 <FlatList data={courseGoals} keyExtractor={(item) => item.id} renderItem={(itemData) => <GoalItem goal={itemData.item} onDeleteItem={deleteGoalHandler} />} />
             </View>
-            <StatusBar backgroundColor="#ffffff" style="dark" />
+            <StatusBar backgroundColor="#1e085a" />
         </View>
     );
 }

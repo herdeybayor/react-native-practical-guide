@@ -17,7 +17,7 @@ const GoalInput = ({ onAddGoal, visible, onCancel }) => {
     };
     return (
         <Modal visible={visible} animationType="slide">
-            <StatusBar backgroundColor="#311b6b" style="light" />
+            <StatusBar backgroundColor="#311b6b" />
             <View style={styles.inputContainer}>
                 <Image source={require("../assets/images/goal.png")} style={styles.image} />
                 <TextInput style={styles.textInput} placeholder="Your course goal!" onChangeText={goalInputHandler} value={enteredGoal} />
