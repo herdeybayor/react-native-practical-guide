@@ -15,11 +15,17 @@ export default function App() {
         ]);
     };
 
+    const deleteGoalHandler = (goalId) => {
+        setCourseGoals((currentGoals) => {
+            return currentGoals.filter((goal) => goal.id !== goalId);
+        });
+    };
+
     return (
         <View style={styles.appContainer}>
             <GoalInput onAddGoal={goalInputHandler} />
             <View style={styles.listContainer}>
-                <FlatList data={courseGoals} keyExtractor={(item) => item.id} renderItem={(itemData) => <GoalItem text={itemData.item.text} />} />
+                <FlatList data={courseGoals} keyExtractor={(item) => item.id} renderItem={(itemData) => <GoalItem goal={itemData.item} onDeleteItem={deleteGoalHandler} />} />
             </View>
         </View>
     );
