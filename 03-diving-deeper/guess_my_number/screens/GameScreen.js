@@ -3,7 +3,7 @@ import React from "react";
 
 import { NumberContainer, PrimaryButton, Title } from "../components";
 
-const GameScreen = ({ userNumber }) => {
+const GameScreen = ({ userNumber, onGameOver }) => {
     const generateRandomBetween = React.useCallback((min, max, exclude) => {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -33,6 +33,12 @@ const GameScreen = ({ userNumber }) => {
         },
         [currentGuess, userNumber]
     );
+
+    React.useEffect(() => {
+        if (currentGuess === userNumber) {
+            onGameOver();
+        }
+    }, [currentGuess, userNumber, onGameOver]);
 
     return (
         <View style={styles.screen}>
