@@ -3,15 +3,30 @@ import React from "react";
 import { PrimaryButton } from "../components";
 
 const StartGameScreen = () => {
+    const [enteredNumber, setEnteredNumber] = React.useState("");
+
+    function numberInputHandler(inputText) {
+        setEnteredNumber(inputText);
+    }
+
+    function resetInputHandler() {
+        setEnteredNumber("");
+    }
+
+    function confirmInputHandler() {
+        if (enteredNumber === "") return;
+        console.log(Number(enteredNumber));
+        setEnteredNumber("");
+    }
     return (
         <View style={styles.inputContainer}>
-            <TextInput style={styles.numberInput} keyboardType="number-pad" maxLength={2} />
+            <TextInput style={styles.numberInput} keyboardType="number-pad" maxLength={2} value={enteredNumber} onChangeText={numberInputHandler} />
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Reset</PrimaryButton>
+                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Confirm</PrimaryButton>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
         </View>
