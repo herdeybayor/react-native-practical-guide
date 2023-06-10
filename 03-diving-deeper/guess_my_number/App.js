@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { GameScreen, StartGameScreen } from "./screens";
 import { globalStyles } from "./styles";
+import { Colors } from "./constants";
 
 export default function App() {
     const [userNumber, setUserNumber] = React.useState();
@@ -12,7 +13,7 @@ export default function App() {
         setUserNumber(selectedNumber);
     }
     return (
-        <LinearGradient colors={["#3b021f", "#ddb52f"]} style={styles.rootScreen}>
+        <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
             <ImageBackground source={require("./assets/images/background.png")} style={styles.rootScreen} resizeMode="cover" imageStyle={styles.backgroundImage}>
                 <SafeAreaView style={globalStyles.droidSafeArea}>{userNumber ? <GameScreen userNumber={userNumber} /> : <StartGameScreen onStartGame={startGameHandler} />}</SafeAreaView>
             </ImageBackground>
