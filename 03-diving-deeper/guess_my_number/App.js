@@ -12,6 +12,7 @@ export default function App() {
 
     function startGameHandler(selectedNumber) {
         setUserNumber(selectedNumber);
+        setIsGameOver(false);
     }
 
     function gameOverHandler() {
@@ -20,20 +21,19 @@ export default function App() {
 
     function restartGameHandler() {
         setUserNumber(null);
-        setIsGameOver(false);
     }
     return (
         <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
             <ImageBackground source={require("./assets/images/background.png")} style={styles.rootScreen} resizeMode="cover" imageStyle={styles.backgroundImage}>
                 <SafeAreaView style={globalStyles.droidSafeArea}>
-                    {isGameOver ? (
-                        userNumber ? (
-                            <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+                    {userNumber ? (
+                        isGameOver ? (
+                            <GameOverScreen onRestartGame={restartGameHandler} />
                         ) : (
-                            <StartGameScreen onStartGame={startGameHandler} />
+                            <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
                         )
                     ) : (
-                        <GameOverScreen onRestartGame={restartGameHandler} />
+                        <StartGameScreen onStartGame={startGameHandler} />
                     )}
                 </SafeAreaView>
             </ImageBackground>
