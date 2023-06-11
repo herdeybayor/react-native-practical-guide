@@ -1,6 +1,6 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import React from "react";
-
+import { MaterialIcons } from "@expo/vector-icons";
 import { Card, InstructionText, NumberContainer, PrimaryButton, Title } from "../components";
 
 const GameScreen = ({ userNumber, onGameOver }) => {
@@ -48,10 +48,14 @@ const GameScreen = ({ userNumber, onGameOver }) => {
                 <InstructionText text="Higher or Lower?" style={styles.instructionText} />
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>-</PrimaryButton>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+                            <MaterialIcons name="remove" size={24} color="white" />
+                        </PrimaryButton>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>+</PrimaryButton>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+                            <MaterialIcons name="add" size={24} color="white" />
+                        </PrimaryButton>
                     </View>
                 </View>
             </Card>
