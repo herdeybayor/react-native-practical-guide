@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     numberInput: {
         height: 50,
         width: 50,
+        fontFamily: "open-sans-bold",
         fontSize: 32,
         borderBottomColor: Colors.accent500,
         borderBottomWidth: 2,
         color: Colors.accent500,
         marginVertical: 8,
-        fontWeight: "bold",
         textAlign: "center",
     },
     buttonsContainer: {
