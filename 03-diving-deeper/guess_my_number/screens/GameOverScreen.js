@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         width: 300,
         aspectRatio: 1,
-        borderRadius: "50%",
+        borderRadius: 250,
         borderWidth: 3,
         borderColor: Colors.primary800,
         overflow: "hidden",
