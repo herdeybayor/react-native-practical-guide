@@ -14,6 +14,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
     const [userNumber, setUserNumber] = React.useState();
     const [isGameOver, setIsGameOver] = React.useState(true);
+    const [guessRounds, setGuessRounds] = React.useState(0);
 
     const [fontsLoaded] = useFonts({
         "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -41,6 +42,7 @@ export default function App() {
 
     function restartGameHandler() {
         setUserNumber(null);
+        setGuessRounds(0);
     }
     return (
         <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen} onLayout={onLayoutRootView}>
@@ -48,7 +50,7 @@ export default function App() {
                 <SafeAreaView style={globalStyles.droidSafeArea}>
                     {userNumber ? (
                         isGameOver ? (
-                            <GameOverScreen onRestartGame={restartGameHandler} />
+                            <GameOverScreen onRestartGame={restartGameHandler} userNumber={userNumber} roundsNumber={guessRounds} />
                         ) : (
                             <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
                         )

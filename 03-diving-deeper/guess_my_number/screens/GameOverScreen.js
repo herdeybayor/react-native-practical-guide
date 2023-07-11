@@ -3,7 +3,7 @@ import React from "react";
 import { PrimaryButton, Title } from "../components";
 import { Colors } from "../constants";
 
-const GameOverScreen = ({ onRestartGame }) => {
+const GameOverScreen = ({ roundsNumber, userNumber, onRestartGame }) => {
     return (
         <View style={styles.screen}>
             <Title text="GAME OVER" />
@@ -11,7 +11,7 @@ const GameOverScreen = ({ onRestartGame }) => {
                 <Image style={styles.image} source={require("../assets/images/success.png")} />
             </View>
             <Text style={styles.summaryText}>
-                Your phone needed <Text style={styles.highlight}>0</Text> rounds to guess the number <Text style={styles.highlight}>0</Text>
+                Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess the number <Text style={styles.highlight}>{userNumber}</Text>
             </Text>
             <PrimaryButton onPress={onRestartGame}>Start New Game</PrimaryButton>
         </View>
