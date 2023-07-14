@@ -1,13 +1,14 @@
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import React from "react";
 import { Colors } from "../../constants";
-import { deviceWidth } from "../../utils/dimensions";
 
 const Card = ({ children }) => {
     return <View style={styles.card}>{children}</View>;
 };
 
 export default Card;
+
+const deviceWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
     card: {
