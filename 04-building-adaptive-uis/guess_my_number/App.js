@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { GameOverScreen, GameScreen, StartGameScreen } from "./screens";
 import { globalStyles } from "./styles";
 import { Colors } from "./constants";
+import { StatusBar } from "expo-status-bar";
 
 // Prevent native splash screen from autohiding before App component declaration
 SplashScreen.preventAutoHideAsync();
@@ -46,21 +47,24 @@ export default function App() {
         setGuessRounds(0);
     }
     return (
-        <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen} onLayout={onLayoutRootView}>
-            <ImageBackground source={require("./assets/images/background.png")} style={styles.rootScreen} resizeMode="cover" imageStyle={styles.backgroundImage}>
-                <SafeAreaView style={globalStyles.droidSafeArea}>
-                    {userNumber ? (
-                        isGameOver ? (
-                            <GameOverScreen onRestartGame={restartGameHandler} userNumber={userNumber} roundsNumber={guessRounds} />
+        <>
+            <StatusBar style="light" />
+            <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen} onLayout={onLayoutRootView}>
+                <ImageBackground source={require("./assets/images/background.png")} style={styles.rootScreen} resizeMode="cover" imageStyle={styles.backgroundImage}>
+                    <SafeAreaView style={globalStyles.droidSafeArea}>
+                        {userNumber ? (
+                            isGameOver ? (
+                                <GameOverScreen onRestartGame={restartGameHandler} userNumber={userNumber} roundsNumber={guessRounds} />
+                            ) : (
+                                <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+                            )
                         ) : (
-                            <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
-                        )
-                    ) : (
-                        <StartGameScreen onStartGame={startGameHandler} />
-                    )}
-                </SafeAreaView>
-            </ImageBackground>
-        </LinearGradient>
+                            <StartGameScreen onStartGame={startGameHandler} />
+                        )}
+                    </SafeAreaView>
+                </ImageBackground>
+            </LinearGradient>
+        </>
     );
 }
 
