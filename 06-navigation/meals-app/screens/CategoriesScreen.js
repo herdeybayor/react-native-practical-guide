@@ -1,8 +1,14 @@
 import { FlatList, Text, View } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import { CategoryGridTile } from "../components";
+import React from "react";
 
 function CategoriesScreen({ navigation }) {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: "All Categories",
+        });
+    }, [navigation]);
     const pressHandler = (categoryId) => {
         navigation.navigate("MealsOverview", { categoryId });
     };

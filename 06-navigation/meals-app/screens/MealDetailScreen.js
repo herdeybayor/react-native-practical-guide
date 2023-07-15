@@ -1,12 +1,21 @@
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { MEALS } from "../data/dummy-data";
 import { List, MealDetails, Subtitle } from "../components";
 
-function MealDetailScreen({ route }) {
+function MealDetailScreen({ navigation, route }) {
     const mealId = route.params.mealId;
 
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: MEALS.find((meal) => meal.id === route.params.mealId).title,
+            headerRight: () => <MaterialIcons name="favorite" size={24} color="white" style={{ marginRight: 16 }} />,
+        });
+    }, [navigation, route]);
 
     return (
         <ScrollView style={styles.rootContainer}>
