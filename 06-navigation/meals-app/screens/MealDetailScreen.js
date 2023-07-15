@@ -3,17 +3,21 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { MEALS } from "../data/dummy-data";
-import { List, MealDetails, Subtitle } from "../components";
+import { IconButton, List, MealDetails, Subtitle } from "../components";
 
 function MealDetailScreen({ navigation, route }) {
     const mealId = route.params.mealId;
 
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
+    function headerButtonPressHandler() {
+        console.log("Pressed!");
+    }
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             title: MEALS.find((meal) => meal.id === route.params.mealId).title,
-            headerRight: () => <MaterialIcons name="favorite" size={24} color="white" style={{ marginRight: 16 }} />,
+            headerRight: () => <IconButton icon="star" color="white" onPress={headerButtonPressHandler} />,
         });
     }, [navigation, route]);
 
